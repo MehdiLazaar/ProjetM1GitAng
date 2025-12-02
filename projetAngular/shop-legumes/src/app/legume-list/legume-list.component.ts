@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -7,14 +7,30 @@ import { ShopService } from '../shop.service';
   templateUrl: './legume-list.component.html',
   styleUrl: './legume-list.component.css'
 })
-export class LegumeListComponent {
+export class LegumeListComponent implements OnInit ,OnChanges{
   constructor(private shopService: ShopService) { }
   Legumes : any [] = [];
+  @Input () selectedCategoryId : number | null = null;
 
   ngOnInit(): void {
-    this.shopService.getLegumes().subscribe(data =>{
-      this.Legumes = data;
-    });
+    this.loadLegumes();
   }
-
+  ngOnChanges(changes : SimpleChanges): void {
+    if(changes['selectedCategoryId']){
+      this.loadLegumes();
+    }
+  }
+  private loadLegumes() : void {
+    if(this.selectedCategoryId){
+      this.shopService.getLegumesByCategory(this.selectedCategoryId).subscribe(data =>{
+        this.Legumes = data;
+        console.log("Légumes filtre " , this.Legumes);
+      });
+    } else {
+      this.shopService.getLegumes().subscribe(data =>{
+        this.Legumes = data;
+        console.log("Tous les légumes " , this.Legumes);
+      });
+    }
+  }
 }

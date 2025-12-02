@@ -15,4 +15,7 @@ export class ShopService {
   getLegumes() {
     return this.http.get<any[]>(`${this.api}/legumes`);
   }
+    getLegumesByCategory(categoryId: number) {
+    return this.http.get<any[]>(`${this.api}/legumes?categoryId=${categoryId}`);
+  }
 }
