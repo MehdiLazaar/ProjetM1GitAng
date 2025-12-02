@@ -1,1 +1,11 @@
-<p>category-list works!</p>
+<div class="list-group">
+  @for (c of categories; track $index) {
+    <a class="list-group-item list-group-item-action py-3 px-4 d-flex justify-content-between align-items-center rounded-3 shadow-sm mb-2"
+       style="border: 1px solid #e9ecef; cursor: pointer;">
+
+      <div class="fw-bold">{{ c.name }}</div>
+
+      <i class="bi bi-chevron-right text-muted"></i>
+    </a>
+  }
+</div>

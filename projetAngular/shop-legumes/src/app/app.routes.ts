@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { ShopComponent } from './shop/shop.component';
 
 export const routes: Routes = [
-  { path: 'shop-legumes', component: ShopComponent },
+  { path: '', component: ShopComponent },
   { path: 'login', component: LoginComponent },
 
   { path: '', redirectTo: 'shop-legumes', pathMatch: 'full' }
