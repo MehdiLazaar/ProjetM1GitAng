@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <!-- Nom de l'app -->
-    <a class="navbar-brand fw-bold" href="#">
+    <a class="navbar-brand fw-bold" routerLink="/shop-legumes">
       Shop-Légumes
     </a>
 
@@ -16,9 +16,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">login</a>
+          <a class="nav-link active" routerLink="/login">login</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+<router-outlet></router-outlet>
+
