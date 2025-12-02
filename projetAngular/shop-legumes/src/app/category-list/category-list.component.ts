@@ -11,7 +11,7 @@ import { ShopService } from '../shop.service';
 export class CategoryListComponent implements OnInit {
   //Pour stocker les categories qu on va recuperer a partir du json-server
   categories : any [] = [];
-
+  activeCategoryId : number | null = null;
   // Envoie une info au composant parent
   @Output() OnCategorySelected = new EventEmitter<number>();
 
@@ -29,6 +29,7 @@ export class CategoryListComponent implements OnInit {
    * @param {any} c - La categorie selectionnee.
    */
   OnCategoryClick(c: any){
+    this.activeCategoryId = c.id;
     this.OnCategorySelected.emit(c.id);
   }
 }
