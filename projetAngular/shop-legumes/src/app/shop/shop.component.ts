@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { LegumeListComponent } from '../legume-list/legume-list.component';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-shop',
@@ -11,8 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class ShopComponent {
   selectedCategoryId : number | null = null;
-  http: any;
-  api: any;
+  LegumesCount: any;
 
   /**
    * Methode appelee lorsqu'une categorie est selectionnee par le composant CategoryListComponent.

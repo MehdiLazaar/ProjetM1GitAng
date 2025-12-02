@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { ShopService } from '../shop.service';
 
 @Component({
@@ -9,8 +9,10 @@ import { ShopService } from '../shop.service';
 })
 export class LegumeListComponent implements OnInit ,OnChanges{
   constructor(private shopService: ShopService) { }
-  Legumes : any [] = [];
+  Legumes: any[] = [];
   @Input () selectedCategoryId : number | null = null;
+  @Output() OnLegumesCount = new EventEmitter<number>();
+  legumesCount: number = 0;
 
   ngOnInit(): void {
     this.loadLegumes();
@@ -24,11 +26,13 @@ export class LegumeListComponent implements OnInit ,OnChanges{
     if(this.selectedCategoryId){
       this.shopService.getLegumesByCategory(this.selectedCategoryId).subscribe(data =>{
         this.Legumes = data;
+        this.OnLegumesCount.emit(data.length);
         console.log("Légumes filtre " , this.Legumes);
       });
     } else {
       this.shopService.getLegumes().subscribe(data =>{
         this.Legumes = data;
+        this.OnLegumesCount.emit(data.length);
         console.log("Tous les légumes " , this.Legumes);
       });
     }

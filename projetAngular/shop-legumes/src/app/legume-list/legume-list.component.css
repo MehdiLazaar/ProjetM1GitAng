@@ -1,3 +1,46 @@
 :host {
   display: contents;
 }
+.legume-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px;
+  transition: 0.2s ease;
+}
+
+.legume-card:hover {
+  border-color: #667eea;
+  transform: translateY(-3px);
+}
+
+/* Titre */
+.card-title {
+  font-size: 18px;
+  color: #333;
+}
+
+/* Prix */
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.currency {
+  font-size: 16px;
+  margin-left: 3px;
+  color: #6b7280;
+}
+
+/* Bouton minimaliste */
+.add-btn {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}

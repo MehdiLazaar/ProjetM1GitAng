@@ -19,15 +19,21 @@
     <!-- Colonne légumes -->
     <div class="col-9">
       <div class="mb-4">
-        <h4 class="fw-bold mb-4" style="color: #667eea;">
+        <h4 class="fw-bold mb-4" style="color: #667eea; display:flex; align-items:center; gap:12px;">
           <i class="bi bi-basket me-2"></i>
-          Légumes
+            Légumes
+            @if (LegumesCount > 0) {
+              <span class="count-pill">
+                Le nombre de légumes est : {{ LegumesCount }}
+              </span>
+            }
         </h4>
+        <!-- ESPACE ENTRE TITRE ET CARTES -->
+        <div style="height: 25px;"></div>
         <div class="row g-4">
-          <app-legume-list [selectedCategoryId]="selectedCategoryId"></app-legume-list>
+          <app-legume-list [selectedCategoryId]="selectedCategoryId"(OnLegumesCount)="LegumesCount = $event"></app-legume-list>
         </div>
       </div>
     </div>
-
   </div>
 </div>

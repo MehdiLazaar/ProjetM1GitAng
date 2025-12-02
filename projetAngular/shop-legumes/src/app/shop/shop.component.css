@@ -1,0 +1,9 @@
+.count-pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: #f1f3f5;
+  color: #4a4a4a;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+}

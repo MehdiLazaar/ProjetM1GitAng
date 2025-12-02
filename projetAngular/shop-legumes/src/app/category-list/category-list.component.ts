@@ -23,7 +23,6 @@ export class CategoryListComponent implements OnInit {
       console.log(this.categories);
     });
   }
-
   /**
    * Envoie l'ID de la categorie selectionnee au composant parent via l'evenement OnCategorySelected.
    * @param {any} c - La categorie selectionnee.
