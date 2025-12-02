@@ -1,32 +1,17 @@
 <div class="container mt-4">
   <div class="row">
-
-    <!-- Colonne catégories -->
     <div class="col-3">
       <h5 class="fw-bold mb-3">Catégories</h5>
-      <ul class="list-group">
+      <div class="list-group">
         <app-category-list></app-category-list>
-      </ul>
+      </div>
     </div>
 
-
-    <!-- Colonne légumes -->
     <div class="col-9">
       <h5 class="fw-bold mb-3">Légumes</h5>
-
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="card shadow-sm">
-            <div class="card-body">
-              <h6 class="card-title">Nom du légume</h6>
-              <p class="card-text">Prix : 2.50 €</p>
-              <button class="btn btn-success btn-sm">Ajouter</button>
-            </div>
-          </div>
-        </div>
+      <div class="row g-3">
+        <app-legume-list></app-legume-list>
       </div>
-
     </div>
-
   </div>
 </div>

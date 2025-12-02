@@ -12,4 +12,7 @@ export class ShopService {
   getCategories() {
     return this.http.get<any[]>(`${this.api}/categories`);
   }
+  getLegumes() {
+    return this.http.get<any[]>(`${this.api}/legumes`);
+  }
 }
