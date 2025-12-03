@@ -18,25 +18,29 @@
       "id": "1",
       "name": "Carotte",
       "price": 2.5,
-      "categoryId": 1
+      "categoryId": 1,
+      "liked": false
     },
     {
       "id": "2",
       "name": "Betterave",
       "price": 3,
-      "categoryId": 1
+      "categoryId": 1,
+      "liked": false
     },
     {
       "id": "3",
       "name": "Salade",
       "price": 1.5,
-      "categoryId": 2
+      "categoryId": 2,
+      "liked": false
     },
     {
       "id": "4",
       "name": "Tomate",
       "price": 6,
-      "categoryId": 3
+      "categoryId": 3,
+      "liked": false
     }
   ]
 }

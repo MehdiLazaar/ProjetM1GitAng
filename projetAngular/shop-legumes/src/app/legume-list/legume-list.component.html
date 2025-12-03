@@ -1,28 +1,26 @@
-<div class="row">
-  <!-- Boucle sur tous les légumes -->
-  <div class="col-md-4 col-sm-6" *ngFor="let c of Legumes; index as i">
+<div class="row g-4">
+  <div class="col-md-4 col-sm-6" *ngFor="let c of Legumes">
     <div class="card legume-card">
       <div class="card-body">
         <h5 class="card-title fw-semibold mb-2">{{ c.name }}</h5>
-        <p class="text-muted small mb-2">
-          <i class="bi bi-grid-3x3-gap me-1"></i>
-          Catégorie {{ c.categoryId }}
-        </p>
-
+        <p class="text-muted small mb-2">Catégorie {{ c.categoryId }}</p>
         <div class="price mb-3">{{ c.price }} €</div>
 
-        <!-- Bouton ajouter au panier -->
-        <button class="btn btn-light w-100 add-btn">
+        <button class="btn btn-light w-100 add-btn mb-2">
           <i class="bi bi-plus-circle me-2"></i> Ajouter au panier
         </button>
 
-        <!-- Bouton modifier -->
-        <button
-          class="btn btn-primary w-100 mt-2"
-          (click)="startEdit(c)"
-          data-bs-toggle="modal"
-          data-bs-target="#editLegumeModal">
+        <button class="btn btn-warning w-100"
+                (click)="editLegume(c)"
+                data-bs-toggle="modal"
+                data-bs-target="#editLegumeModal">
           Modifier
+        </button>
+        <!-- Bouton like -->
+        <button class="btn btn-outline-primary w-100"
+                (click)="toggleLike(c)">
+          <i [class]="c.liked ? 'fa-solid fa-thumbs-up' : 'fa-regular fa-thumbs-up'"></i>
+          {{ c.liked ? 'Liked' : 'Like' }}
         </button>
       </div>
     </div>

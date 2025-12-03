@@ -10,11 +10,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./legume-list.component.css']
 })
 export class LegumeListComponent implements OnInit, OnChanges {
-  Legumes: any[] = [];
-
   @Input() selectedCategoryId: number | null = null;
   @Output() onLegumesCount = new EventEmitter<number>();
   @Output() onEditLegume = new EventEmitter<any>();
+
+  Legumes: any[] = [];
 
   constructor(private shopService: ShopService) {}
 
@@ -28,22 +28,25 @@ export class LegumeListComponent implements OnInit, OnChanges {
     }
   }
 
-  private loadLegumes(): void {
-    if (this.selectedCategoryId) {
-      this.shopService.getLegumesByCategory(this.selectedCategoryId).subscribe(data => {
-        this.Legumes = data;
-        this.onLegumesCount.emit(data.length);
-      });
-    } else {
-      this.shopService.getLegumes().subscribe(data => {
-        this.Legumes = data;
-        this.onLegumesCount.emit(data.length);
-      });
-    }
+  loadLegumes(): void {
+    const observable = this.selectedCategoryId
+      ? this.shopService.getLegumesByCategory(this.selectedCategoryId)
+      : this.shopService.getLegumes();
+
+    observable.subscribe((data) => {
+      this.Legumes = data.map(l => ({ ...l, liked: false }));
+      this.onLegumesCount.emit(this.Legumes.length);
+    });
   }
 
-  // bouton "Modifier"
-  startEdit(legume: any) {
+  editLegume(legume: any) {
     this.onEditLegume.emit(legume);
+  }
+  toggleLike(legume: any) {
+    legume.liked = !legume.liked;
+    this.shopService.toggleLike(legume.id, legume.liked).subscribe(
+      res => console.log(`Légume ${legume.name} like mis à jour:`, res),
+      err => console.error("Erreur lors du like:", err)
+    );
   }
 }

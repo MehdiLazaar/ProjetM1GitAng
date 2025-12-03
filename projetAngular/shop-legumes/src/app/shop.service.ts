@@ -22,4 +22,7 @@ export class ShopService {
   updateLegume(legume: any): Observable<any> {
     return this.http.put(`${this.api}/legumes/${legume.id}`, legume);
   }
+  toggleLike(legumeId: number, liked: boolean): Observable<any> {
+    return this.http.patch(`${this.api}/legumes/${legumeId}`, { liked });
+  }
 }
