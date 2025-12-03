@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,8 @@ export class ShopService {
   }
     getLegumesByCategory(categoryId: number) {
     return this.http.get<any[]>(`${this.api}/legumes?categoryId=${categoryId}`);
+  }
+  updateLegume(legume: any): Observable<any> {
+    return this.http.put(`${this.api}/legumes/${legume.id}`, legume);
   }
 }

@@ -5,8 +5,7 @@
     <div class="col-3">
       <div class="mb-4">
         <h4 class="fw-bold mb-4" style="color: #667eea;">
-          <i class="bi bi-list-ul me-2"></i>
-          Catégories
+          <i class="bi bi-list-ul me-2"></i> Catégories
         </h4>
         <div class="card border-0 shadow-sm" style="border-radius: 16px; overflow: hidden;">
           <div class="list-group list-group-flush">
@@ -20,19 +19,57 @@
     <div class="col-9">
       <div class="mb-4">
         <h4 class="fw-bold mb-4" style="color: #667eea; display:flex; align-items:center; gap:12px;">
-          <i class="bi bi-basket me-2"></i>
-            Légumes
-            @if (LegumesCount > 0) {
-              <span class="count-pill">
-                Le nombre de légumes est : {{ LegumesCount }}
-              </span>
-            }
+          <i class="bi bi-basket me-2"></i> Légumes
+          <span *ngIf="LegumesCount > 0" class="count-pill">
+            Le nombre de légumes est : {{ LegumesCount }}
+          </span>
         </h4>
-        <!-- ESPACE ENTRE TITRE ET CARTES -->
+
         <div style="height: 25px;"></div>
+
         <div class="row g-4">
-          <app-legume-list [selectedCategoryId]="selectedCategoryId"(OnLegumesCount)="LegumesCount = $event"></app-legume-list>
+          <!-- Composant LegumeList -->
+          <app-legume-list
+            [selectedCategoryId]="selectedCategoryId"
+            (onLegumesCount)="LegumesCount = $event"
+            (onEditLegume)="startEdit($event)">
+          </app-legume-list>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal pour modifier un légume -->
+  <div class="modal fade" id="editLegumeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Modifier un légume</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <form #editForm="ngForm" (ngSubmit)="submitEdit(editForm)">
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+              <input type="text" class="form-control" [(ngModel)]="editingLegume.name" name="name" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Prix (€)</label>
+              <input type="number" class="form-control" [(ngModel)]="editingLegume.price" name="price" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Categorie (ID)</label>
+              <input type="number" class="form-control" [(ngModel)]="editingLegume.categoryId" name="categoryId" required />
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Enregistrer</button>
+          </form>
+        </div>
+
       </div>
     </div>
   </div>

@@ -1,18 +1,24 @@
 {
   "categories": [
-    { "id": "1",
-    "name": "Racines"},
-    {"id": "2",
-    "name": "Feuilles"},
-    {"id": "3",
-    "name": "Fruits"
-  }
-],
+    {
+      "id": "1",
+      "name": "Racines"
+    },
+    {
+      "id": "2",
+      "name": "Feuilles"
+    },
+    {
+      "id": "3",
+      "name": "Fruits"
+    }
+  ],
   "legumes": [
-    {"id": "1",
-    "name": "Carotte",
-    "price": 2.5,
-    "categoryId": 1
+    {
+      "id": "1",
+      "name": "Carotte",
+      "price": 2.5,
+      "categoryId": 1
     },
     {
       "id": "2",
